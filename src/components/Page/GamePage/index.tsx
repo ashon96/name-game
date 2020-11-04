@@ -1,26 +1,31 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import back from "./Arrow.svg";
 import title from "./Title.svg";
 
 import "./styles.css";
-import { fetchData } from "./helpers";
+import { fetchEmployees } from "./helpers";
+import { Employee } from "../../../utilities/types";
 
 const GamePage: React.FC = () => {
-  const history = useHistory();
-
-  // TODO: Have a useEffect here to populate useState with data
-  useEffect(() => {
-    // TODO
-    fetchData();
-    // console.log(jsonObject);
-  }, []);
   // have a counter of number of correct and incorrect guesses
-  const [data, setData] = React.useState<any[]>([]); // TODO: set the type constraint
+  const [employees, setEmployees] = React.useState<Employee[] | undefined>(
+    undefined
+  ); // TODO: set the type constraint
   const [correctGuesses, setCorrectGuesses] = React.useState<number>(0);
   // have a useState for clicked boolean. If clicked, then, reset
   const [hasBeenClicked, setHasBeenClicked] = React.useState<boolean>(false);
+  const history = useHistory();
+  const fetchData = useCallback(async () => {
+    const fetchedEmployees: Employee[] = await fetchEmployees();
+    setEmployees(fetchedEmployees ?? []);
+  }, []);
 
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
+  console.log("the list of employees is ", employees);
   // add hover state to arrow
   return (
     <div className="game-background">
