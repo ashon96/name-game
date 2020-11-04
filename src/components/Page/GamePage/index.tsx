@@ -1,15 +1,25 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import back from "./Arrow.svg";
+
+import "./styles.css";
 
 const GamePage: React.FC = () => {
   const history = useHistory();
+  // add hover state to arrow
   return (
-    <>
-      <button className="button" onClick={() => history.push("/")}>
-        Back to home
-      </button>
-      <div>haha</div>
-    </>
+    <div className="game-background">
+      <div className="outer-container">
+        <div className="top-bar">
+          <img
+            src={back}
+            className="arrow"
+            alt="logo"
+            onClick={() => history.push("/")}
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 
