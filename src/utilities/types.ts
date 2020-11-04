@@ -9,17 +9,17 @@ export interface Employee {
   type: string;
 }
 
-interface HeadShot {
+export interface HeadShot {
   alt: string;
   height: number;
   id: string;
   mimeType: string;
   type: string;
   url: string;
-  width: 340;
+  width: number;
 }
 
-interface SocialLink {
+export interface SocialLink {
   callToAction: string;
   type: string;
   url: string;
