@@ -39,6 +39,12 @@ const GamePage: React.FC = () => {
           />
           <img src={title} className="title" alt="title-text" />
         </div>
+        <div className="game-contents">
+          <p className="question-text">
+            Which one of these good looking photos is the real
+          </p>
+          <p className="name">Andrew Shon</p>
+        </div>
       </div>
     </div>
   );
