@@ -5,8 +5,6 @@ export const fetchData = async () => {
 
   await Axios.get(url)
     .then(function (response) {
-      console.log("do we get here");
-
       console.log(response.data);
       return response.data;
     })
