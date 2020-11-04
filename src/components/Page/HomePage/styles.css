@@ -3,6 +3,11 @@
   pointer-events: none;
 }
 
+.home-background {
+  background-color: #223547;
+  text-align: center;
+}
+
 .outer-container {
   min-height: 100vh;
   display: table;
