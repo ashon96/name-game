@@ -1,0 +1,43 @@
+.home-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.outer-container {
+  min-height: 100vh;
+  display: table;
+  width: 100%;
+}
+
+.inner-container {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.home-link {
+  color: #61dafb;
+}
+
+.description {
+  position: relative;
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+  margin-top: 72px;
+  margin-bottom: 72px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.button {
+  height: 56px;
+  width: 359px;
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  color: #ffffff;
+  background: #15659d;
+  border-radius: 14px;
+}
