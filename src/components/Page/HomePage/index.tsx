@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./Frame.svg";
 import { useHistory } from "react-router-dom";
 import "./styles.css";
+import Button from "../../Button";
 
 const HomePage: React.FC = () => {
   const history = useHistory();
@@ -14,9 +15,10 @@ const HomePage: React.FC = () => {
           <p className="description">
             Try matching the WillowTree employee to their photo.
           </p>
-          <button className="button" onClick={() => history.push("/game-page")}>
-            Play!
-          </button>
+          <Button
+            buttonText="Play!"
+            onClick={() => history.push("/game-page")}
+          />
         </div>
       </header>
     </div>

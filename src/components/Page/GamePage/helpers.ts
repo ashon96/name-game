@@ -4,6 +4,39 @@ import { makeHeadShotFixture } from "../../../fixtures/headShot";
 import { makeSocialLinkFixture } from "../../../fixtures/socialLink";
 import { Employee, HeadShot, SocialLink } from "../../../utilities/types";
 
+export const loadInitialPageData = (
+  employees: Employee[],
+  setEmployees: (employees: Employee[]) => void,
+  setEmployeeToGuess: (employee: Employee) => void,
+  setRandomEmployees: (employees: Employee[]) => void
+) => {
+  console.log("total employees is ", employees.length);
+  const {
+    firstRandomEmployee,
+    randomEmployees,
+    filteredEmployees,
+  } = generateRandomEmployee(employees);
+  setEmployeeToGuess(firstRandomEmployee);
+  setRandomEmployees(randomEmployees);
+  setEmployees(filteredEmployees);
+};
+
+const generateRandomEmployee = (employees: Employee[]) => {
+  let randomEmployees: Employee[] = [];
+  for (let i = 0; i < 6; i++) {
+    const givenIndex = Math.floor(Math.random() * employees.length);
+    const givenEmployee = employees[givenIndex];
+    randomEmployees = [...randomEmployees, givenEmployee];
+    employees = employees.filter((item) => item !== givenEmployee);
+  }
+  return {
+    firstRandomEmployee:
+      randomEmployees[Math.floor(Math.random() * randomEmployees.length)],
+    randomEmployees,
+    filteredEmployees: employees,
+  };
+};
+
 export const fetchEmployees = async (): Promise<Employee[]> => {
   const url = "https://willowtreeapps.com/api/v1.0/profiles";
 

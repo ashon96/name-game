@@ -1,0 +1,16 @@
+.button {
+  height: 56px;
+  width: 359px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  color: #ffffff;
+  background: #15659d;
+  border-radius: 14px;
+}
+
+.button:disabled {
+  opacity: 0.4;
+}
