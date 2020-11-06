@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./Frame.svg";
+import logo from "../../../icons/Frame.svg";
 import { useHistory } from "react-router-dom";
 import componentStyles from "./styles.module.css";
 import Button from "../../Button";

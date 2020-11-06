@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import back from "./Arrow.svg";
-import title from "./Title.svg";
+import back from "../../../icons/Arrow.svg";
 
 import componentStyles from "./styles.module.css";
 import { fetchEmployees, loadPageData } from "./helpers";
 import { Employee } from "../../../utilities/types";
 import Button from "../../Button";
 import ProfilePhoto from "../../ProfilePhoto";
+import ResultsPage from "../ResultsPage";
+import TitleHeader from "../../TitleHeader";
 
 const GamePage: React.FC = () => {
   // have a counter of number of correct and incorrect guesses
@@ -90,11 +91,7 @@ const GamePage: React.FC = () => {
                 alt="back-arrow"
                 onClick={() => history.push("/")}
               />
-              <img
-                src={title}
-                className={componentStyles.title}
-                alt="title-text"
-              />
+              <TitleHeader />
             </div>
             <div className={componentStyles["game-contents"]}>
               <p className={componentStyles["question-text"]}>
@@ -125,7 +122,8 @@ const GamePage: React.FC = () => {
           </div>
         </div>
       );
-      // } else if (correctGuesses === 5) {
+    } else if (correctGuesses === 5) {
+      return <ResultsPage />;
     } else {
       return <div>Loading data...</div>;
     }
