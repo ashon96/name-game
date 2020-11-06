@@ -25,21 +25,22 @@ export const loadPageData = (
 };
 
 /**
- * Converts the given param from milliseconds to seconds
+ * Converts the given quantity from milliseconds to seconds
  * @param milliseconds the quantity to convert to seconds
  */
 export const convertMillisecondsToSeconds = (milliseconds: number) =>
   Math.round(milliseconds / 1000);
 
 /**
- * Randomly selects the random index in which to choose randomly from a list
+ * Randomly selects the random index in which to choose randomly from the boundaries of
+ * a given list length
  * @param listLength the boundary in which the random index can exist
  */
 const calculateRandomIndex = (listLength: number) =>
   Math.floor(Math.random() * listLength);
 
 /**
- * Generates the random emlpoyee to guess along with the six employees to guess from.
+ * Generates the random employee to guess along with the six employees to guess from.
  * After picking each of the six employees, the employee list as a whole decrements by one,
  * removing that given employee in order to enforce unique rounds of employees each time
  * @param employees the overall list of employees
