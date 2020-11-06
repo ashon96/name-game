@@ -4,7 +4,7 @@ import { makeHeadShotFixture } from "../../../fixtures/headShot";
 import { makeSocialLinkFixture } from "../../../fixtures/socialLink";
 import { Employee, HeadShot, SocialLink } from "../../../utilities/types";
 
-export const loadInitialPageData = (
+export const loadPageData = (
   employees: Employee[],
   setEmployees: (employees: Employee[]) => void,
   setEmployeeToGuess: (employee: Employee) => void,
