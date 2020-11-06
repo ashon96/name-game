@@ -8,15 +8,19 @@ import { useHistory } from "react-router-dom";
 
 interface Props {
   correctGuesses: number;
+  totalDuration: number;
 }
 
-const ResultsPage: React.FC<Props> = ({ correctGuesses }) => {
+const ResultsPage: React.FC<Props> = ({ correctGuesses, totalDuration }) => {
   const history = useHistory();
-  // TOOD: Display % of Correct selections
-  // Display % of Incorrect selections
-  // Display Average selection time per round
+  // TODO: Display Average selection time per round
   const calculateSelectionPercentage = (selectionStat: number) =>
-    (selectionStat / 5) * 100;
+    calculateAverage(selectionStat) * 100;
+
+  // calculateAverage(selectionStat)
+  const calculateAverage = (totals: number) => totals / 5;
+
+  console.log("the total duration is ", totalDuration);
 
   return (
     <div className={componentStyles["results-background"]}>
@@ -49,6 +53,9 @@ const ResultsPage: React.FC<Props> = ({ correctGuesses }) => {
             {`${calculateSelectionPercentage(
               5 - correctGuesses
             )}% Incorrect Selections`}{" "}
+          </p>
+          <p className={componentStyles["incorrect-stats-info"]}>
+            {`${calculateAverage(totalDuration)} sec Avg Selection Time`}{" "}
           </p>
         </div>
       </div>

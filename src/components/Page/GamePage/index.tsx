@@ -11,7 +11,7 @@ import ResultsPage from "../ResultsPage";
 import TitleHeader from "../../TitleHeader";
 
 const GamePage: React.FC = () => {
-  // have a counter of number of correct and incorrect guesses
+  const [initialStartTime, setInitialStartTime] = React.useState<number>(0);
   const [employeeToGuess, setEmployeeToGuess] = React.useState<Employee>();
   const [randomEmployees, setRandomEmployees] = React.useState<Employee[]>([]);
   const [employees, setEmployees] = React.useState<Employee[] | undefined>(
@@ -31,6 +31,8 @@ const GamePage: React.FC = () => {
     React.useState<boolean>(false),
   ];
 
+  console.log("initial is ", initialStartTime);
+
   const [loadProgress, setLoadProgress] = React.useState<boolean>(true);
 
   const history = useHistory();
@@ -48,6 +50,7 @@ const GamePage: React.FC = () => {
   useEffect(() => {
     fetchData();
     setLoadProgress(false);
+    setInitialStartTime(new Date().getTime());
   }, [fetchData]);
 
   const isCorrectGuess = (givenEmployee: Employee) =>
@@ -75,6 +78,9 @@ const GamePage: React.FC = () => {
       );
     }
   };
+
+  const convertMillisecondsToSeconds = (milliseconds: number) =>
+    Math.round(milliseconds / 1000);
 
   const renderGamePageContents = () => {
     if (!loadProgress && employees && employeeToGuess && totalGuesses < 5) {
@@ -120,7 +126,15 @@ const GamePage: React.FC = () => {
         </div>
       );
     } else if (totalGuesses === 5) {
-      return <ResultsPage correctGuesses={correctGuesses} />;
+      return (
+        <ResultsPage
+          correctGuesses={correctGuesses}
+          totalDuration={
+            convertMillisecondsToSeconds(new Date().getTime()) -
+            convertMillisecondsToSeconds(initialStartTime)
+          }
+        />
+      );
     } else {
       return <div>Loading data...</div>;
     }
