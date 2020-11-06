@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+# Name Game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How To Play
 
-## Available Scripts
+From the home screen when the app is loaded, you are greeted with a `Play` button. Once you click, you have five
+rounds of guessing the correct employee from WillowTree out of six possible choices. Once you have made five guesses,
+you are taken to the statistics page where you can see how you did. Information such as percentage of correct/incorrect
+selection and average selection time are displayed. You are then prompted to navigate back to the home screen
+where you can keep playing the game!
 
-In the project directory, you can run:
+## About
 
-### `yarn start`
+This product is a web application built on React and Typescript for front-end user interface that fetches
+backend data provided by WillowTree API. How this product was developed:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## React
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+React was chosen for this particular project because this framework is particularly excellent at selectively
+rendering certain components based on state/data changes. This, in turn, improves performance by prevention of
+constantly reloading O(N) times for every action performed
 
-### `yarn test`
+## Typescript
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Typescript in itself is a methodology of unit testing. If a given prop, function, interface, etc, does not receive
+or satisfy the conditions of what it's receiving/returning, there will be compilation errors, which are great
+indicators of vulnerabilities/potential bugs in the system. It's ensured that each component/entity is receiving
+the necessary data safely without room for error
 
-### `yarn build`
+## CSS Modules
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+At almost every component-level directory, there exists a module.css file that contains all the necessary local styles
+for that given componenet. This provides scalability and flexibility when reusing components for other functionalites/pages
+and creates an ease of use when appending onto existing styles
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## React Router
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+In order to transition between the home page and the game page, React Router has been implemented so that
+each of these pages have a path that can be navigated to with ease and can be verifed in its url
 
-### `yarn eject`
+## Enzyme
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Another framework for unit testing, Enzyme simulates a virtual DOM, much of what one sees in the browser
+and can be easily used to assert certain components/logic render in the correct way and can also perform
+UI-related tasks such as performing a user flow
