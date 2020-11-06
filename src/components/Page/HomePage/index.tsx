@@ -4,7 +4,14 @@ import { useHistory } from "react-router-dom";
 import componentStyles from "./styles.module.css";
 import Button from "components/Button";
 
+/**
+ * This page represents the start screen the user is presented with
+ */
 const HomePage: React.FC = () => {
+  /**
+   * Fetched history (part of React Router) in order to properly
+   * navigate between different pages/routes
+   */
   const history = useHistory();
 
   return (

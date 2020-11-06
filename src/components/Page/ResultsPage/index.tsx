@@ -12,6 +12,12 @@ interface Props {
   totalDuration: number;
 }
 
+/**
+ * This page represents all the statistics that the user will see
+ * once they have made five guesses in a game. They will see
+ * the percentage of correct/incorrect guesses along with
+ * the average time they took to answer each question
+ */
 const ResultsPage: React.FC<Props> = ({ correctGuesses, totalDuration }) => {
   const history = useHistory();
   return (
@@ -41,13 +47,13 @@ const ResultsPage: React.FC<Props> = ({ correctGuesses, totalDuration }) => {
           >{`${calculateSelectionPercentage(
             correctGuesses
           )}% Correct Selections`}</p>
-          <p className={componentStyles["incorrect-stats-info"]}>
+          <p className={componentStyles["other-stats-info"]}>
             {`${calculateSelectionPercentage(
               5 - correctGuesses
-            )}% Incorrect Selections`}{" "}
+            )}% Incorrect Selections`}
           </p>
-          <p className={componentStyles["incorrect-stats-info"]}>
-            {`${calculateAverage(totalDuration)} sec Avg Selection Time`}{" "}
+          <p className={componentStyles["other-stats-info"]}>
+            {`${calculateAverage(totalDuration)} sec Avg Selection Time`}
           </p>
         </div>
       </div>

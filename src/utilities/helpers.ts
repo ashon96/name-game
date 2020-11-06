@@ -4,6 +4,11 @@ import { makeSocialLinkFixture } from "fixtures/socialLink";
 import { Employee, HeadShot, SocialLink } from "./types";
 import { makeHeadShotFixture } from "fixtures/headShot";
 
+/**
+ * Fetches the list of employees via the provided url below
+ * and decodes/formats the data for the codebase to use
+ * via decodeEmployees
+ */
 export const fetchEmployees = async (): Promise<Employee[]> => {
   const url = "https://willowtreeapps.com/api/v1.0/profiles";
 
@@ -16,6 +21,11 @@ export const fetchEmployees = async (): Promise<Employee[]> => {
   }
 };
 
+/**
+ * Sanitizes the api data by mapping it to the Employee interface
+ * for the codebase to use and removes any undefined fields
+ * @param apiData the data fetched
+ */
 const decodeEmployees = (apiData: any[]): Employee[] =>
   apiData.map((item) =>
     omitUndefinedValues(
@@ -31,6 +41,11 @@ const decodeEmployees = (apiData: any[]): Employee[] =>
     )
   );
 
+/**
+ * Santizies the api head shot data by mapping it to the
+ * HeadShot interface for the codebase to use and remove any undefined fields
+ * @param apiHeadShot the headshot data fetched
+ */
 const decodeHeadShot = (apiHeadShot: any): HeadShot =>
   omitUndefinedValues(
     makeHeadShotFixture({
@@ -44,6 +59,12 @@ const decodeHeadShot = (apiHeadShot: any): HeadShot =>
     })
   );
 
+/**
+ * Sanitizes the api social links data by mapping it to the list
+ * of data model Social Links for the codebase to use and remove
+ * any undefined fields
+ * @param apiSocialLinks the social links data fetched
+ */
 const decodeSocialLinks = (apiSocialLinks: any[]): SocialLink[] =>
   apiSocialLinks.map((item) =>
     omitUndefinedValues(
@@ -55,6 +76,12 @@ const decodeSocialLinks = (apiSocialLinks: any[]): SocialLink[] =>
     )
   );
 
+/**
+ * This function will iterate through all the keys of a given object
+ * and remove any undefined fields to prevent further room for error
+ * in future logic/usage
+ * @param object the object to sanitize
+ */
 export const omitUndefinedValues = <T extends object>(object: T): T => {
   for (const key of Object.keys(object)) {
     const typedKey = key as keyof T;

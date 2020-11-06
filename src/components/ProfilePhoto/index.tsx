@@ -11,6 +11,12 @@ interface Props {
   onClick: () => void;
 }
 
+/**
+ * This component houses an employee to guess for (six of these
+ * are rendered on the GamePage via map function). This will render
+ * an image from the employee's headshot
+ * @param param0
+ */
 const ProfilePhoto: React.FC<Props> = ({
   employee,
   hasPhotoBeenClicked,
@@ -19,6 +25,11 @@ const ProfilePhoto: React.FC<Props> = ({
   hasRoundBeenClicked,
   onClick,
 }) => {
+  /**
+   * This function will apply certain css
+   * properties such as greying out the image or adding
+   * a green/red background depending on user action
+   */
   const generateClassName = () =>
     hasRoundBeenClicked
       ? !hasPhotoBeenClicked
