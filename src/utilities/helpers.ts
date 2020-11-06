@@ -3,17 +3,16 @@ import { makeEmployeeFixture } from "fixtures/employee";
 import { makeSocialLinkFixture } from "fixtures/socialLink";
 import { Employee, HeadShot, SocialLink } from "./types";
 import { makeHeadShotFixture } from "fixtures/headShot";
+import { API_URL } from "./constants";
 
 /**
- * Fetches the list of employees via the provided url below
+ * Fetches the list of employees via API call
  * and decodes/formats the data for the codebase to use
  * via decodeEmployees
  */
 export const fetchEmployees = async (): Promise<Employee[]> => {
-  const url = "https://willowtreeapps.com/api/v1.0/profiles";
-
   try {
-    const response = await Axios.get(url);
+    const response = await Axios.get(API_URL);
     return decodeEmployees(response.data);
   } catch (error) {
     console.log(error);

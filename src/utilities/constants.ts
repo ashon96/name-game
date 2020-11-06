@@ -1,4 +1,9 @@
 /**
+ * The url to fetch data from
+ */
+export const API_URL = "https://willowtreeapps.com/api/v1.0/profiles";
+
+/**
  * The conversion factor used to convert
  * milliseconds to seconds
  */
