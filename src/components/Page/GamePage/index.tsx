@@ -3,12 +3,13 @@ import { useHistory } from "react-router-dom";
 import arrow from "../../../icons/Arrow.svg";
 
 import componentStyles from "./styles.module.css";
-import { fetchEmployees, loadPageData } from "./helpers";
+import { convertMillisecondsToSeconds, loadPageData } from "./helpers";
 import { Employee } from "../../../utilities/types";
 import Button from "../../Button";
 import ProfilePhoto from "../../ProfilePhoto";
 import ResultsPage from "../ResultsPage";
 import TitleHeader from "../../TitleHeader";
+import { fetchEmployees } from "../../../utilities/helpers";
 
 const GamePage: React.FC = () => {
   const [initialStartTime, setInitialStartTime] = React.useState<number>(0);
@@ -78,9 +79,6 @@ const GamePage: React.FC = () => {
       );
     }
   };
-
-  const convertMillisecondsToSeconds = (milliseconds: number) =>
-    Math.round(milliseconds / 1000);
 
   const renderGamePageContents = () => {
     if (!loadProgress && employees && employeeToGuess && totalGuesses < 5) {

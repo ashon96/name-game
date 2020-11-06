@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../icons/Frame.svg";
+import homeLogo from "../../../icons/HomeLogo.svg";
 import { useHistory } from "react-router-dom";
 import componentStyles from "./styles.module.css";
 import Button from "../../Button";
@@ -11,7 +11,11 @@ const HomePage: React.FC = () => {
     <div className={componentStyles["home-background"]}>
       <header className={componentStyles["outer-container"]}>
         <div className={componentStyles["inner-container"]}>
-          <img src={logo} className={componentStyles["home-logo"]} alt="logo" />
+          <img
+            src={homeLogo}
+            className={componentStyles["home-logo"]}
+            alt="logo"
+          />
           <p className={componentStyles.description}>
             Try matching the WillowTree employee to their photo.
           </p>

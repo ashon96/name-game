@@ -5,6 +5,7 @@ import TitleHeader from "../../TitleHeader";
 import face from "../../../icons/Face.svg";
 import Button from "../../Button";
 import { useHistory } from "react-router-dom";
+import { calculateSelectionPercentage, calculateAverage } from "./helpers";
 
 interface Props {
   correctGuesses: number;
@@ -13,15 +14,6 @@ interface Props {
 
 const ResultsPage: React.FC<Props> = ({ correctGuesses, totalDuration }) => {
   const history = useHistory();
-  // TODO: Display Average selection time per round
-  const calculateSelectionPercentage = (selectionStat: number) =>
-    calculateAverage(selectionStat) * 100;
-
-  // calculateAverage(selectionStat)
-  const calculateAverage = (totals: number) => totals / 5;
-
-  console.log("the total duration is ", totalDuration);
-
   return (
     <div className={componentStyles["results-background"]}>
       <div className={componentStyles["outer-container"]}>

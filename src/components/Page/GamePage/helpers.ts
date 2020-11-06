@@ -1,8 +1,4 @@
-import Axios from "axios";
-import { makeEmployeeFixture } from "../../../fixtures/employee";
-import { makeHeadShotFixture } from "../../../fixtures/headShot";
-import { makeSocialLinkFixture } from "../../../fixtures/socialLink";
-import { Employee, HeadShot, SocialLink } from "../../../utilities/types";
+import { Employee } from "../../../utilities/types";
 
 export const loadPageData = (
   employees: Employee[],
@@ -10,7 +6,6 @@ export const loadPageData = (
   setEmployeeToGuess: (employee: Employee) => void,
   setRandomEmployees: (employees: Employee[]) => void
 ) => {
-  console.log("total employees is ", employees.length);
   const {
     firstRandomEmployee,
     randomEmployees,
@@ -21,82 +16,24 @@ export const loadPageData = (
   setEmployees(filteredEmployees);
 };
 
+export const convertMillisecondsToSeconds = (milliseconds: number) =>
+  Math.round(milliseconds / 1000);
+
+const calculateRandomIndex = (listLength: number) =>
+  Math.floor(Math.random() * listLength);
+
 const generateRandomEmployee = (employees: Employee[]) => {
   let randomEmployees: Employee[] = [];
   for (let i = 0; i < 6; i++) {
-    const givenIndex = Math.floor(Math.random() * employees.length);
+    const givenIndex = calculateRandomIndex(employees.length);
     const givenEmployee = employees[givenIndex];
     randomEmployees = [...randomEmployees, givenEmployee];
     employees = employees.filter((item) => item !== givenEmployee);
   }
   return {
     firstRandomEmployee:
-      randomEmployees[Math.floor(Math.random() * randomEmployees.length)],
+      randomEmployees[calculateRandomIndex(randomEmployees.length)],
     randomEmployees,
     filteredEmployees: employees,
   };
-};
-
-export const fetchEmployees = async (): Promise<Employee[]> => {
-  const url = "https://willowtreeapps.com/api/v1.0/profiles";
-
-  try {
-    const response = await Axios.get(url);
-    return decodeEmployees(response.data);
-  } catch (error) {
-    console.log(error);
-    return [];
-  }
-};
-
-const decodeEmployees = (apiData: any[]): Employee[] =>
-  apiData.map((item) =>
-    omitUndefinedValues(
-      makeEmployeeFixture({
-        firstName: item.firstName,
-        headShot: decodeHeadShot(item.headshot),
-        id: item.id,
-        jobTitle: item.jobTitle,
-        lastName: item.lastName,
-        slug: item.slug,
-        socialLinks: decodeSocialLinks(item.socialLinks),
-      })
-    )
-  );
-
-const decodeHeadShot = (apiHeadShot: any): HeadShot =>
-  omitUndefinedValues(
-    makeHeadShotFixture({
-      alt: apiHeadShot.alt,
-      height: apiHeadShot.height,
-      id: apiHeadShot.id,
-      mimeType: apiHeadShot.mimeType,
-      type: apiHeadShot.type,
-      url: apiHeadShot.url,
-      width: apiHeadShot.width,
-    })
-  );
-
-const decodeSocialLinks = (apiSocialLinks: any[]): SocialLink[] =>
-  apiSocialLinks.map((item) =>
-    omitUndefinedValues(
-      makeSocialLinkFixture({
-        callToAction: item.callToAction,
-        type: item.type,
-        url: item.url,
-      })
-    )
-  );
-
-export const omitUndefinedValues = <T extends object>(object: T): T => {
-  for (const key of Object.keys(object)) {
-    const typedKey = key as keyof T;
-    const value = object[typedKey] as unknown;
-
-    if (value === undefined) {
-      delete object[typedKey];
-    }
-  }
-
-  return object;
 };
