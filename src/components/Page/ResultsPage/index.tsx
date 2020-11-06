@@ -12,7 +12,9 @@ interface Props {
 
 const ResultsPage: React.FC<Props> = ({ correctGuesses }) => {
   const history = useHistory();
-
+  // TOOD: Display % of Correct selections
+  // Display % of Incorrect selections
+  // Display Average selection time per round
   return (
     <div className={componentStyles["results-background"]}>
       <div className={componentStyles["top-bar"]}>
@@ -32,6 +34,7 @@ const ResultsPage: React.FC<Props> = ({ correctGuesses }) => {
           </div>
         </div>
       </div>
+      <div></div>
     </div>
   );
 };

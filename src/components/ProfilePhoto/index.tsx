@@ -4,8 +4,8 @@ import componentStyles from "./styles.module.css";
 
 interface Props {
   employee: Employee;
-  employeeToGuess: Employee;
   hasPhotoBeenClicked: boolean;
+  isCorrectGuess: (chosenEmployee: Employee) => boolean;
   setHasPhotoBeenClicked: (hasPhotoBeenClicked: boolean) => void;
   hasRoundBeenClicked: boolean;
   onClick: () => void;
@@ -13,38 +13,27 @@ interface Props {
 
 const ProfilePhoto: React.FC<Props> = ({
   employee,
-  employeeToGuess,
   hasPhotoBeenClicked,
+  isCorrectGuess,
   setHasPhotoBeenClicked,
   hasRoundBeenClicked,
   onClick,
 }) => {
-  const isCorrectGuess = (givenEmployee: Employee) =>
-    givenEmployee === employeeToGuess && hasRoundBeenClicked;
-  const generateClassName = () => {
-    let photoClassName = "";
-    if (!hasPhotoBeenClicked && hasRoundBeenClicked) {
-      photoClassName = "disabled-guess";
-    } else if (hasPhotoBeenClicked) {
-      if (isCorrectGuess(employee)) {
-        photoClassName = "correct-guess";
-        console.log(`${employee.firstName} is correct`);
-      } else {
-        photoClassName = "incorrect-guess";
-        console.log(`${employee.firstName} is incorrect`);
-      }
-    }
-    return photoClassName;
-  };
-
-  const imageClass = generateClassName();
+  const generateClassName = () =>
+    hasRoundBeenClicked
+      ? !hasPhotoBeenClicked
+        ? "disabled-guess"
+        : isCorrectGuess(employee)
+        ? "correct-guess"
+        : "incorrect-guess"
+      : "";
 
   return (
     <>
       <img
         src={`${employee.headShot.url}`}
         height={260}
-        className={componentStyles[imageClass]}
+        className={componentStyles[generateClassName()]}
         onClick={() => {
           if (!hasRoundBeenClicked) {
             setHasPhotoBeenClicked(true);

@@ -14,16 +14,15 @@ const GamePage: React.FC = () => {
   // have a counter of number of correct and incorrect guesses
   const [employeeToGuess, setEmployeeToGuess] = React.useState<Employee>();
   const [randomEmployees, setRandomEmployees] = React.useState<Employee[]>([]);
-  // const [randomEmployees, setRandomEmployees] = React.useState<Employee[]>([]);
   const [employees, setEmployees] = React.useState<Employee[] | undefined>(
     undefined
-  ); // TODO: set the type constraint
+  );
   const [correctGuesses, setCorrectGuesses] = React.useState<number>(0);
   const [totalGuesses, setTotalGuesses] = React.useState<number>(0);
 
   // have a useState for clicked boolean. If clicked, then, reset
   const [hasBeenClicked, setHasBeenClicked] = React.useState<boolean>(false);
-  let hasPhotoBeenClickedList = [
+  const photoUseStateList = [
     React.useState<boolean>(false),
     React.useState<boolean>(false),
     React.useState<boolean>(false),
@@ -51,17 +50,20 @@ const GamePage: React.FC = () => {
     setLoadProgress(false);
   }, [fetchData]);
 
+  const isCorrectGuess = (givenEmployee: Employee) =>
+    givenEmployee === employeeToGuess;
+
   const verifyUserChoice = (chosenEmployee: Employee) => {
     setHasBeenClicked(true);
     setTotalGuesses(totalGuesses + 1);
-    if (chosenEmployee === employeeToGuess) {
+    if (isCorrectGuess(chosenEmployee)) {
       setCorrectGuesses(correctGuesses + 1);
     }
   };
 
   const navigateToNextGuess = () => {
     setHasBeenClicked(false);
-    hasPhotoBeenClickedList.forEach((resetPhotoClick) => {
+    photoUseStateList.forEach((resetPhotoClick) => {
       resetPhotoClick[1](false);
     });
     if (employees) {
@@ -99,9 +101,9 @@ const GamePage: React.FC = () => {
                 {randomEmployees.map((item, index) => (
                   <ProfilePhoto
                     employee={item}
-                    employeeToGuess={employeeToGuess}
-                    hasPhotoBeenClicked={hasPhotoBeenClickedList[index][0]}
-                    setHasPhotoBeenClicked={hasPhotoBeenClickedList[index][1]}
+                    hasPhotoBeenClicked={photoUseStateList[index][0]}
+                    isCorrectGuess={isCorrectGuess}
+                    setHasPhotoBeenClicked={photoUseStateList[index][1]}
                     hasRoundBeenClicked={hasBeenClicked}
                     onClick={() => verifyUserChoice(item)}
                   />
@@ -124,8 +126,6 @@ const GamePage: React.FC = () => {
     }
   };
 
-  // add hover state to arrow
-  // we want the 'continue' button to render a new random list
   return renderGamePageContents();
 };
 
