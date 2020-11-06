@@ -46,7 +46,7 @@ const calculateRandomIndex = (listLength: number) =>
  * removing that given employee in order to enforce unique rounds of employees each time
  * @param employees the overall list of employees
  */
-const generateRandomEmployee = (employees: Employee[]) => {
+export const generateRandomEmployee = (employees: Employee[]) => {
   let randomEmployees: Employee[] = [];
   for (let i = 0; i <= NUMBER_OF_ROUNDS; i++) {
     const givenEmployee = employees[calculateRandomIndex(employees.length)];
