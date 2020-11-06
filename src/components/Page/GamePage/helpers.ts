@@ -48,8 +48,7 @@ const calculateRandomIndex = (listLength: number) =>
 const generateRandomEmployee = (employees: Employee[]) => {
   let randomEmployees: Employee[] = [];
   for (let i = 0; i < 6; i++) {
-    const givenIndex = calculateRandomIndex(employees.length);
-    const givenEmployee = employees[givenIndex];
+    const givenEmployee = employees[calculateRandomIndex(employees.length)];
     randomEmployees = [...randomEmployees, givenEmployee];
     employees = employees.filter((item) => item !== givenEmployee);
   }

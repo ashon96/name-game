@@ -27,16 +27,16 @@ export const fetchEmployees = async (): Promise<Employee[]> => {
  * @param apiData the data fetched
  */
 const decodeEmployees = (apiData: any[]): Employee[] =>
-  apiData.map((item) =>
+  apiData.map((apiEmployee) =>
     omitUndefinedValues(
       makeEmployeeFixture({
-        firstName: item.firstName,
-        headShot: decodeHeadShot(item.headshot),
-        id: item.id,
-        jobTitle: item.jobTitle,
-        lastName: item.lastName,
-        slug: item.slug,
-        socialLinks: decodeSocialLinks(item.socialLinks),
+        firstName: apiEmployee.firstName,
+        headShot: decodeHeadShot(apiEmployee.headshot),
+        id: apiEmployee.id,
+        jobTitle: apiEmployee.jobTitle,
+        lastName: apiEmployee.lastName,
+        slug: apiEmployee.slug,
+        socialLinks: decodeSocialLinks(apiEmployee.socialLinks),
       })
     )
   );
@@ -66,12 +66,12 @@ const decodeHeadShot = (apiHeadShot: any): HeadShot =>
  * @param apiSocialLinks the social links data fetched
  */
 const decodeSocialLinks = (apiSocialLinks: any[]): SocialLink[] =>
-  apiSocialLinks.map((item) =>
+  apiSocialLinks.map((apiSocialLink) =>
     omitUndefinedValues(
       makeSocialLinkFixture({
-        callToAction: item.callToAction,
-        type: item.type,
-        url: item.url,
+        callToAction: apiSocialLink.callToAction,
+        type: apiSocialLink.type,
+        url: apiSocialLink.url,
       })
     )
   );
