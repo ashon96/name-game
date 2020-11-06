@@ -5,7 +5,7 @@
 From the home screen when the app is loaded, you are greeted with a `Play` button. Once you click, you have five
 rounds of guessing the correct employee from WillowTree out of six possible choices. Once you have made five guesses,
 you are taken to the statistics page where you can see how you did. Information such as percentage of correct/incorrect
-selection and average selection time are displayed. You are then prompted to navigate back to the home screen
+selections and average selection time are displayed. You are then prompted to navigate back to the home screen
 where you can keep playing the game!
 
 ## About
@@ -29,7 +29,7 @@ the necessary data safely without room for error
 ## CSS Modules
 
 At almost every component-level directory, there exists a module.css file that contains all the necessary local styles
-for that given componenet. This provides scalability and flexibility when reusing components for other functionalites/pages
+for that given component. This provides scalability and flexibility when reusing components for other functionalites/pages
 and creates an ease of use when appending onto existing styles
 
 ## React Router
