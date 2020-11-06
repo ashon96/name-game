@@ -6,6 +6,7 @@ import face from "icons/Face.svg";
 import Button from "components/Button";
 import { useHistory } from "react-router-dom";
 import { calculateSelectionPercentage, calculateAverage } from "./helpers";
+import { NUMBER_OF_ROUNDS } from "utilities/constants";
 
 interface Props {
   correctGuesses: number;
@@ -29,7 +30,7 @@ const ResultsPage: React.FC<Props> = ({ correctGuesses, totalDuration }) => {
           <p className={componentStyles.congratulations}>
             Congratulations,
             <br />
-            you scored {`${correctGuesses}/5!`}
+            you scored {`${correctGuesses}/${NUMBER_OF_ROUNDS}!`}
           </p>
           <div>
             <div className={componentStyles["home-button"]}>
@@ -49,7 +50,7 @@ const ResultsPage: React.FC<Props> = ({ correctGuesses, totalDuration }) => {
           )}% Correct Selections`}</p>
           <p className={componentStyles["other-stats-info"]}>
             {`${calculateSelectionPercentage(
-              5 - correctGuesses
+              NUMBER_OF_ROUNDS - correctGuesses
             )}% Incorrect Selections`}
           </p>
           <p className={componentStyles["other-stats-info"]}>

@@ -1,3 +1,4 @@
+import { NUMBER_OF_ROUNDS, SECONDS_CONVERSION } from "utilities/constants";
 import { Employee } from "utilities/types";
 
 /**
@@ -29,7 +30,7 @@ export const loadPageData = (
  * @param milliseconds the quantity to convert to seconds
  */
 export const convertMillisecondsToSeconds = (milliseconds: number) =>
-  Math.round(milliseconds / 1000);
+  Math.round(milliseconds / SECONDS_CONVERSION);
 
 /**
  * Randomly selects the random index in which to choose randomly from the boundaries of
@@ -47,7 +48,7 @@ const calculateRandomIndex = (listLength: number) =>
  */
 const generateRandomEmployee = (employees: Employee[]) => {
   let randomEmployees: Employee[] = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i <= NUMBER_OF_ROUNDS; i++) {
     const givenEmployee = employees[calculateRandomIndex(employees.length)];
     randomEmployees = [...randomEmployees, givenEmployee];
     employees = employees.filter((item) => item !== givenEmployee);

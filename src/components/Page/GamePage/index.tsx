@@ -10,6 +10,7 @@ import TitleHeader from "components/TitleHeader";
 import { fetchEmployees } from "utilities/helpers";
 
 import componentStyles from "./styles.module.css";
+import { NUMBER_OF_ROUNDS } from "utilities/constants";
 
 /**
  * The Page that renders the actual game where each round will be rendered
@@ -155,7 +156,12 @@ const GamePage: React.FC = () => {
    * -- Otherwise, render a loading div until the page has finished loading the data
    */
   const renderGamePageContents = () => {
-    if (!loadProgress && employees && employeeToGuess && totalGuesses < 5) {
+    if (
+      !loadProgress &&
+      employees &&
+      employeeToGuess &&
+      totalGuesses < NUMBER_OF_ROUNDS
+    ) {
       return (
         <div className={componentStyles["game-background"]}>
           <div className={componentStyles["outer-container"]}>
@@ -197,7 +203,7 @@ const GamePage: React.FC = () => {
           </div>
         </div>
       );
-    } else if (totalGuesses === 5) {
+    } else if (totalGuesses === NUMBER_OF_ROUNDS) {
       return (
         <ResultsPage
           correctGuesses={correctGuesses}

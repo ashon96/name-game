@@ -1,4 +1,5 @@
 import React from "react";
+import { IMAGE_DIMENSION } from "utilities/constants";
 import { Employee } from "utilities/types";
 import componentStyles from "./styles.module.css";
 
@@ -43,7 +44,7 @@ const ProfilePhoto: React.FC<Props> = ({
     <>
       <img
         src={`${employee.headShot.url}`}
-        height={260}
+        height={IMAGE_DIMENSION}
         className={componentStyles[generateClassName()]}
         onClick={() => {
           if (!hasRoundBeenClicked) {
@@ -51,7 +52,7 @@ const ProfilePhoto: React.FC<Props> = ({
             onClick();
           }
         }}
-        width={260}
+        width={IMAGE_DIMENSION}
         alt={`${employee.id}`}
       ></img>
     </>
