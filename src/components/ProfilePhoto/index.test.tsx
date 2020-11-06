@@ -29,7 +29,7 @@ describe("ProfilePhoto", () => {
     expect(dom.find("img").prop("className")).toHaveLength(0);
   });
 
-  test("Verify the img tag renders disabled when the round has been clicked, but the photo has not been clicked ", () => {
+  test("Verify the img tag renders disabled when the round has been clicked, but the photo has not been clicked", () => {
     const employee = makeEmployeeFixture();
     const dom = shallow(
       <ProfilePhoto
