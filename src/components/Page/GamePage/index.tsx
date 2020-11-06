@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import back from "../../../icons/Arrow.svg";
+import arrow from "../../../icons/Arrow.svg";
 
 import componentStyles from "./styles.module.css";
 import { fetchEmployees, loadPageData } from "./helpers";
@@ -51,16 +51,11 @@ const GamePage: React.FC = () => {
     setLoadProgress(false);
   }, [fetchData]);
 
-  console.log("current employee count ", employees?.length);
-
   const verifyUserChoice = (chosenEmployee: Employee) => {
     setHasBeenClicked(true);
     setTotalGuesses(totalGuesses + 1);
     if (chosenEmployee === employeeToGuess) {
       setCorrectGuesses(correctGuesses + 1);
-      console.log("we get here, right?. The correct one");
-    } else {
-      console.log("we guessed wrong");
     }
   };
 
@@ -80,13 +75,13 @@ const GamePage: React.FC = () => {
   };
 
   const renderGamePageContents = () => {
-    if (!loadProgress && employees && employeeToGuess && correctGuesses < 5) {
+    if (!loadProgress && employees && employeeToGuess && totalGuesses < 5) {
       return (
         <div className={componentStyles["game-background"]}>
           <div className={componentStyles["outer-container"]}>
             <div className={componentStyles["top-bar"]}>
               <img
-                src={back}
+                src={arrow}
                 className={componentStyles.arrow}
                 alt="back-arrow"
                 onClick={() => history.push("/")}
@@ -122,8 +117,8 @@ const GamePage: React.FC = () => {
           </div>
         </div>
       );
-    } else if (correctGuesses === 5) {
-      return <ResultsPage />;
+    } else if (totalGuesses === 5) {
+      return <ResultsPage correctGuesses={correctGuesses} />;
     } else {
       return <div>Loading data...</div>;
     }

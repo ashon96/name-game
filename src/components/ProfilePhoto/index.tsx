@@ -23,7 +23,6 @@ const ProfilePhoto: React.FC<Props> = ({
     givenEmployee === employeeToGuess && hasRoundBeenClicked;
   const generateClassName = () => {
     let photoClassName = "";
-
     if (!hasPhotoBeenClicked && hasRoundBeenClicked) {
       photoClassName = "disabled-guess";
     } else if (hasPhotoBeenClicked) {
@@ -37,18 +36,18 @@ const ProfilePhoto: React.FC<Props> = ({
     }
     return photoClassName;
   };
-  // import componentStyles from "./styles.module.css";
+
+  const imageClass = generateClassName();
 
   return (
     <>
       <img
         src={`${employee.headShot.url}`}
         height={260}
-        className={componentStyles[generateClassName()]}
+        className={componentStyles[imageClass]}
         onClick={() => {
           if (!hasRoundBeenClicked) {
             setHasPhotoBeenClicked(true);
-            // verifyUserChoice(item);
             onClick();
           }
         }}

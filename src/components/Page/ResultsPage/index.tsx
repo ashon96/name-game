@@ -1,30 +1,35 @@
 import React from "react";
 import componentStyles from "./styles.module.css";
 import TitleHeader from "../../TitleHeader";
-import square from "../../../icons/Square.svg";
 
-import star from "../../../icons/Star.svg";
-import triangle from "../../../icons/Triangle.svg";
 import face from "../../../icons/Face.svg";
+import Button from "../../Button";
+import { useHistory } from "react-router-dom";
 
-const ResultsPage: React.FC = () => {
+interface Props {
+  correctGuesses: number;
+}
+
+const ResultsPage: React.FC<Props> = ({ correctGuesses }) => {
+  const history = useHistory();
+
   return (
     <div className={componentStyles["results-background"]}>
       <div className={componentStyles["top-bar"]}>
         <TitleHeader />
-        <div className={componentStyles["shapes-container"]}>
-          <img
-            src={square}
-            className={componentStyles.square}
-            alt="square"
-          ></img>
-          <img src={star} className={componentStyles.star} alt="star"></img>
-          <img
-            src={triangle}
-            className={componentStyles.triangle}
-            alt="triangle"
-          ></img>
-          <img src={face} alt="face" className={componentStyles.face}></img>
+        <img src={face} alt="face" className={componentStyles.face}></img>
+        <p className={componentStyles.congratulations}>
+          Congratulations,
+          <br />
+          you scored {`${correctGuesses}/5!`}
+        </p>
+        <div>
+          <div className={componentStyles["home-button"]}>
+            <Button
+              buttonText="Return to Home"
+              onClick={() => history.push("/")}
+            />
+          </div>
         </div>
       </div>
     </div>

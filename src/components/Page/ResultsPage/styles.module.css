@@ -11,38 +11,31 @@
   background-color: #223547;
 }
 
-.title {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 38.81px;
+.face {
+  position: relative;
+  display: table;
+  margin: 0 auto;
+  margin-top: 30px;
+  /* margin-left: 48%;
+  margin-right: 52%; */
+}
+
+.congratulations {
+  position: relative;
+  /* margin-left: 400px;
+  margin-top: 303px; */
+  font-family: Helvetica;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 48px;
+  color: #ffffff;
   text-align: center;
 }
 
-.shapes-container {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.face {
-  position: absolute;
-  margin-left: 667px;
-  margin-top: 144px;
-}
-.square {
-  position: absolute;
-  margin-left: 629px;
-  margin-top: 106px;
-}
-
-.star {
-  position: absolute;
-  margin-left: 703.99px;
-  margin-top: 71px;
-}
-
-.triangle {
-  position: absolute;
-  margin-left: 783.99px;
-  margin-top: 103px;
+.home-button {
+  position: relative;
+  display: table;
+  margin: 0 auto;
+  margin-top: 140px;
 }
