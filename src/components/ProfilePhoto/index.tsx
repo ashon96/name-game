@@ -1,5 +1,5 @@
 import React from "react";
-import { Employee } from "../../utilities/types";
+import { Employee } from "utilities/types";
 import componentStyles from "./styles.module.css";
 
 interface Props {

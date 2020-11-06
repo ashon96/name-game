@@ -1,15 +1,15 @@
 import React, { useCallback, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import arrow from "../../../icons/Arrow.svg";
+import arrow from "icons/Arrow.svg";
 
 import componentStyles from "./styles.module.css";
 import { convertMillisecondsToSeconds, loadPageData } from "./helpers";
-import { Employee } from "../../../utilities/types";
-import Button from "../../Button";
-import ProfilePhoto from "../../ProfilePhoto";
-import ResultsPage from "../ResultsPage";
-import TitleHeader from "../../TitleHeader";
-import { fetchEmployees } from "../../../utilities/helpers";
+import { Employee } from "utilities/types";
+import Button from "components/Button";
+import ProfilePhoto from "components/ProfilePhoto";
+import ResultsPage from "components/Page/ResultsPage";
+import TitleHeader from "components/TitleHeader";
+import { fetchEmployees } from "utilities/helpers";
 
 const GamePage: React.FC = () => {
   const [initialStartTime, setInitialStartTime] = React.useState<number>(0);

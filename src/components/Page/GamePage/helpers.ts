@@ -1,4 +1,4 @@
-import { Employee } from "../../../utilities/types";
+import { Employee } from "utilities/types";
 
 export const loadPageData = (
   employees: Employee[],

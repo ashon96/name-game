@@ -1,8 +1,8 @@
 import React from "react";
-import homeLogo from "../../../icons/HomeLogo.svg";
+import homeLogo from "icons/HomeLogo.svg";
 import { useHistory } from "react-router-dom";
 import componentStyles from "./styles.module.css";
-import Button from "../../Button";
+import Button from "components/Button";
 
 const HomePage: React.FC = () => {
   const history = useHistory();

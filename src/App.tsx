@@ -1,7 +1,7 @@
 import React from "react";
-import HomePage from "./components/Page/HomePage";
+import HomePage from "components/Page/HomePage";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import GamePage from "./components/Page/GamePage";
+import GamePage from "components/Page/GamePage";
 
 const App: React.FC = () => (
   <Router>

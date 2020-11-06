@@ -1,5 +1,5 @@
 import { makeFixture } from "make-fixture";
-import { Employee } from "../utilities/types";
+import { Employee } from "utilities/types";
 import { makeHeadShotFixture } from "./headShot";
 import { makeSocialLinkFixture } from "./socialLink";
 

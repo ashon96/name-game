@@ -1,5 +1,5 @@
 import React from "react";
-import title from "../../icons/Title.svg";
+import title from "icons/Title.svg";
 
 import componentStyles from "./styles.module.css";
 const TitleHeader: React.FC = () => (

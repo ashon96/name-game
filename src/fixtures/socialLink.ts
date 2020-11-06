@@ -1,5 +1,5 @@
 import { makeFixture } from "make-fixture";
-import { SocialLink } from "../utilities/types";
+import { SocialLink } from "utilities/types";
 
 export const makeSocialLinkFixture = (overrides?: Partial<SocialLink>) => {
   const defaults: SocialLink = {

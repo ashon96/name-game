@@ -1,8 +1,8 @@
 import Axios from "axios";
-import { makeEmployeeFixture } from "../fixtures/employee";
-import { makeHeadShotFixture } from "../fixtures/headShot";
-import { makeSocialLinkFixture } from "../fixtures/socialLink";
+import { makeEmployeeFixture } from "fixtures/employee";
+import { makeSocialLinkFixture } from "fixtures/socialLink";
 import { Employee, HeadShot, SocialLink } from "./types";
+import { makeHeadShotFixture } from "fixtures/headShot";
 
 export const fetchEmployees = async (): Promise<Employee[]> => {
   const url = "https://willowtreeapps.com/api/v1.0/profiles";

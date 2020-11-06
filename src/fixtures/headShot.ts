@@ -1,5 +1,5 @@
 import { makeFixture } from "make-fixture";
-import { HeadShot } from "../utilities/types";
+import { HeadShot } from "utilities/types";
 
 export const makeHeadShotFixture = (overrides?: Partial<HeadShot>) => {
   const defaults: HeadShot = {

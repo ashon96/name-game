@@ -1,9 +1,9 @@
 import React from "react";
 import componentStyles from "./styles.module.css";
-import TitleHeader from "../../TitleHeader";
+import TitleHeader from "components/TitleHeader";
 
-import face from "../../../icons/Face.svg";
-import Button from "../../Button";
+import face from "icons/Face.svg";
+import Button from "components/Button";
 import { useHistory } from "react-router-dom";
 import { calculateSelectionPercentage, calculateAverage } from "./helpers";
 
